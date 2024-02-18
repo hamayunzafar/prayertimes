@@ -1,0 +1,110 @@
+/* App.css */
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.02);
+  padding: 20px;
+  margin: 0px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid #e5e5e5;
+}
+
+.card-header {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #333;
+}
+
+.card-time {
+  font-size: 1.25em;
+  color: #333;
+  margin: 5px 0;
+}
+
+.card-details {
+  font-size: 1em;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.card-counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.counter-button {
+  background: #eee;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.counter-value {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 12px;
+  text-align: center;
+  flex-grow: 1;
+  margin: 0 10px;
+}
+
+/* You can add this to index.css to apply globally */
+body {
+  font-family: 'Plus Jakarta Sans', 'Arial', sans-serif;
+  background: #f4f4f4;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* Rest of your global styles */
+
+/* App.css */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates 3 columns */
+  grid-gap: 20px; /* Space between cards */
+  padding: 20px;
+}
+/* ... other styles ... */
+
+/* Navbar.css */
+.navbar {
+  height: 32px;
+  padding: 16px 16px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  height: 100%; /* Fill the navbar height */
+  width: auto; /* Adjust width to maintain aspect ratio */
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+  }
+  body {
+    padding: 0px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-container {
+    grid-template-columns: 1fr; /* 1 column for mobile screens */
+  }
+}
