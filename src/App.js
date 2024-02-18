@@ -51,7 +51,7 @@ function App() {
 
       try {
         // We use axios to make a GET request to the API with the correct parameters.
-        const response = await axios.get(`http://api.aladhan.com/v1/timings/${date}-${month}-${year}`, {
+        const response = await axios.get(`https://api.aladhan.com/v1/timings/${date}-${month}-${year}`, {
           params: {
             latitude: 51.0447, // Latitude for Calgary
             longitude: -114.0719, // Longitude for Calgary
