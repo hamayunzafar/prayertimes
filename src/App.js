@@ -1,49 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import {PrayerTimeBlock, Navbar, Modal} from './components.js'
 import axios from 'axios';
 import logo from './prayerTimesLogoWhite.svg'
 
-// This component represents a single prayer time card.
-// It takes in the prayerName, time, and details as props for display.
-// It also manages the state for the Qaza counter within the card.
-const PrayerTimeBlock = ({ prayerName, time, details }) => {
-  // useState hook is used to keep track of the Qaza count for each prayer.
-  // It starts at 0 and can be increased or decreased with the buttons.
-  const [qazaCount, setQazaCount] = useState(0);
-
-  // The return statement renders the card structure with the prayer information and Qaza counter.
-  return (
-    <div className="card">
-      <div className="card-header">{prayerName}</div>
-      <div className="card-time">{time}</div>
-      <div className="card-details">{details}</div>
-      <div className="card-counter">
-        <button className="counter-button" onClick={() => setQazaCount(Math.max(qazaCount - 1, 0))}>-</button>
-        <input type="text" className="counter-value" value={qazaCount} readOnly />
-        <button className="counter-button" onClick={() => setQazaCount(qazaCount + 1)}>+</button>
-      </div>
-    </div>
-  );
-};
-
-const Navbar = () => {
-  return (
-    <nav className="navbar">
-      <img src={logo} alt="Logo" className="navbar-logo" />
-    </nav>
-  );
-};
-
 // The main App component where we fetch the prayer times and render the prayer time cards.
+// The prayerTimes state holds the array of prayer time information.
+// useEffect hook is used to perform the API call when the component mounts to the DOM.
+// This function is declared to fetch the prayer times from the Al-Adhan API.
+// We construct the current date string in the required API format.
+
 function App() {
-  // The prayerTimes state holds the array of prayer time information.
   const [prayerTimes, setPrayerTimes] = useState([]);
 
-  // useEffect hook is used to perform the API call when the component mounts to the DOM.
   useEffect(() => {
-    // This function is declared to fetch the prayer times from the Al-Adhan API.
     const fetchPrayerTimes = async () => {
-      // We construct the current date string in the required API format.
       const today = new Date();
       const date = today.getDate().toString().padStart(2, '0');
       const month = (today.getMonth() + 1).toString().padStart(2, '0');
@@ -84,12 +55,22 @@ function App() {
     fetchPrayerTimes();
   }, []);
 
+  const [showModal, setShowModal] = useState(true); // Start with the modal open
+
+  const handleClose = () => {
+    setShowModal(true);
+  };
+
   // The App component renders a header and a grid of PrayerTimeBlock components.
   return (
     <div className="App">
+
       <Navbar />
+
       <header className="App-header">
-        <div className="grid-container">
+      </header>
+
+      <div className="grid-container">
           {prayerTimes.map((prayer, index) => (
             <PrayerTimeBlock
               key={index} // React requires a unique key for list items.
@@ -99,7 +80,11 @@ function App() {
             />
           ))}
         </div>
-      </header>
+
+      <div className="App">
+        <Modal show={showModal} onClose={handleClose} />
+      </div>
+    
     </div>
   );
 }

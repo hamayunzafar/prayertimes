@@ -2,7 +2,8 @@
 .card {
   background: #fff;
   border-radius: 16px;
-  box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.02);
+  box-shadow: 6px 4px 4px
+   rgba(0, 0, 0, 0.02);
   padding: 20px;
   margin: 0px 0;
   display: flex;
@@ -39,7 +40,7 @@
 .counter-button {
   background: #eee;
   border: none;
-  border-radius: 50%;
+  border-radius: 4px;
   width: 36px;
   height: 36px;
   display: flex;
@@ -57,6 +58,7 @@
   text-align: center;
   flex-grow: 1;
   margin: 0 10px;
+  font-size: 1em;
 }
 
 /* You can add this to index.css to apply globally */
@@ -92,6 +94,68 @@ body {
   width: auto; /* Adjust width to maintain aspect ratio */
 }
 
+/* Modal.css */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 4px;
+  width: 500px; /* Adjust as needed */
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.city-input {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.show-button {
+  padding: 10px;
+  background-color: #007bff; /* Bootstrap primary color for example */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* When modal is not displayed, hide it */
+.modal {
+  display: none;
+}
+
+/* When modal is displayed */
+.modal.show {
+  display: flex;
+}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
