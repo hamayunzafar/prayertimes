@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import {PrayerTimeBlock, Navbar, Modal} from './components.js'
+import {PrayerTimeBlock} from './components/PrayerTimeBlock.js';
+import {Modal} from './components/Modal.js';
+import {Navbar} from './components/Navbar.js';
 import axios from 'axios';
-import logo from './prayerTimesLogoWhite.svg'
 
 // The main App component where we fetch the prayer times and render the prayer time cards.
 // The prayerTimes state holds the array of prayer time information.
@@ -55,10 +56,12 @@ function App() {
     fetchPrayerTimes();
   }, []);
 
-  const [showModal, setShowModal] = useState(true); // Start with the modal open
+  // State to control visibility of the modal
+  const [isModalOpen, setIsModalOpen] = useState(true); // Modal is open by default
 
-  const handleClose = () => {
-    setShowModal(true);
+  // Function to close the modal
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   // The App component renders a header and a grid of PrayerTimeBlock components.
@@ -67,8 +70,9 @@ function App() {
 
       <Navbar />
 
-      <header className="App-header">
-      </header>
+      <Modal show={isModalOpen} onClose={closeModal} />
+
+      <header className="App-header"></header>
 
       <div className="grid-container">
           {prayerTimes.map((prayer, index) => (
@@ -79,10 +83,6 @@ function App() {
               details={prayer.details}
             />
           ))}
-        </div>
-
-      <div className="App">
-        <Modal show={showModal} onClose={handleClose} />
       </div>
     
     </div>

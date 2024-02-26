@@ -1,4 +1,44 @@
 /* App.css */
+
+/* You can add this to index.css to apply globally */
+body {
+  font-family: 'Plus Jakarta Sans', 'Arial', sans-serif;
+  background: #f4f4f4;
+  margin: 0px;
+  padding: 0px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates 3 columns */
+  grid-gap: 20px; /* Space between cards */
+  padding: 20px;
+  margin-top: 64px;
+  justify-content: center;
+}
+/* ... other styles ... */
+
+/* Navbar.css */
+.navbar {
+  height: 32px;
+  width: 100%;
+  padding: 16px 16px;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.navbar-logo {
+  height: 100%; /* Fill the navbar height */
+  width: auto; /* Adjust width to maintain aspect ratio */
+}
+
+/* App.css */
 .card {
   background: #fff;
   border-radius: 16px;
@@ -59,39 +99,7 @@
   flex-grow: 1;
   margin: 0 10px;
   font-size: 1em;
-}
-
-/* You can add this to index.css to apply globally */
-body {
-  font-family: 'Plus Jakarta Sans', 'Arial', sans-serif;
-  background: #f4f4f4;
-  margin: 0px;
-  padding: 0px;
-}
-
-/* Rest of your global styles */
-
-/* App.css */
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Creates 3 columns */
-  grid-gap: 20px; /* Space between cards */
-  padding: 20px;
-}
-/* ... other styles ... */
-
-/* Navbar.css */
-.navbar {
-  height: 32px;
-  padding: 16px 16px;
-  background-color: black;
-  display: flex;
-  align-items: center;
-}
-
-.navbar-logo {
-  height: 100%; /* Fill the navbar height */
-  width: auto; /* Adjust width to maintain aspect ratio */
+  width: 0px;
 }
 
 /* Modal.css */
@@ -109,16 +117,23 @@ body {
 
 .modal-content {
   background-color: white;
-  padding: 20px;
-  border-radius: 4px;
+  padding: 24px;
+  border-radius: 8px;
   width: 500px; /* Adjust as needed */
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+  align-items: baseline;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.sub-title {
 }
 
 .close-button {
@@ -130,32 +145,61 @@ body {
 .modal-body {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
+  position: relative;
 }
 
 .city-input {
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 12px;
+  font-size: 14px;
+  font-family: Plus Jakarta Sans;
+  border: 1px solid #cecece;
+  border-radius: 8px;
 }
 
 .show-button {
-  padding: 10px;
-  background-color: #007bff; /* Bootstrap primary color for example */
-  color: white;
+  padding: 16px;
+  background-color: #00D7B0; /* Bootstrap primary color for example */
+  color: black;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
-}
-
-/* When modal is not displayed, hide it */
-.modal {
-  display: none;
+  font-family: Plus Jakarta Sans;
+  font-weight: 700;
+  width: 100%;
 }
 
 /* When modal is displayed */
 .modal.show {
   display: flex;
 }
+
+.suggestions-list {
+  position: absolute;
+  top: 100%; /* Position it right below the input field */
+  left: 0;
+  right: 0;
+  z-index: 10; /* Ensure it stacks above other content */
+  background: white; /* Background color for the dropdown */
+  border: 1px solid #ddd; /* Border for the dropdown */
+  border-top: none; /* Optionally remove the top border */
+  list-style-type: none; /* Remove bullet points from list items */
+  padding: 0; /* Reset padding */
+  margin: 0; /* Reset margin */
+  max-height: 200px; /* Limit the height of the dropdown */
+  overflow-y: auto; /* Add scroll if there are many items */
+}
+
+.suggestions-list li {
+  padding: 10px; /* Padding for list items */
+  cursor: pointer; /* Change cursor to indicate interactivity */
+}
+
+.suggestions-list li:hover {
+  background-color: #f2f2f2; /* Color change on hover for visual feedback */
+}
+
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -170,5 +214,14 @@ body {
 @media (max-width: 480px) {
   .grid-container {
     grid-template-columns: 1fr; /* 1 column for mobile screens */
+    padding: 16px;
+    grid-gap: 16px;
+  }
+  .modal-content {
+    background-color: white;
+    padding: 24px;
+    border-radius: 8px;
+    width: 75%; /* Adjust as needed */
+    gap: 16px;
   }
 }
