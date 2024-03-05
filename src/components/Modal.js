@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-// ... other imports
 
 export const Modal = ({ show, onClose }) => {
   const [input, setInput] = useState('');
